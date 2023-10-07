@@ -1,4 +1,8 @@
 ---
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import '@fontsource/cabin'
+import '@fontsource/blaka-hollow';
 interface Props {
 	title: string;
 }
@@ -16,36 +20,15 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class=' min-h-screen grid grid-rows-[auto,1fr,auto]'>
+		<Header/>
 		<slot />
+		<Footer/>
 	</body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>
+
+<!-- // o header e o footer, sempre rodeando o slot. O Boiler plate sempre no index.astro -->
+<!-- <body class='px-24 sm:p-8 max-w-7xl mx-auto min-h-screen grid grid-rows-[auto,1fr,auto]'> - é uma maneira boa de divisionar header e footer na compisção, além das alturas // 1. body 2.header e footer components, envolvendo o slot 
+------------------
+removido para componente especifico, do body px-24 sm:p-8 max-w-7xl mx-auto	
+-->
